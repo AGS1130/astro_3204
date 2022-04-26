@@ -1,0 +1,9 @@
+{
+  "PRODUCTION_URL": "https://www.example.com",
+  "TITLE": "Astro is Awesome!",
+  "DESCRIPTION": "",
+  "KEYWORDS": "",
+  "OG_IMAGE": "https://www.example.com/favicon.png",
+  "TWITTER_ACCOUNT": "@example_tweet",
+  "THEME_COLOR": "#000000"
+}

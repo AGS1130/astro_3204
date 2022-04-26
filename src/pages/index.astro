@@ -1,0 +1,77 @@
+---
+import svgIndigoCheck from '~/public/check_indigo.svg';
+import svgPurpleCheck from '~/public/check_purple.svg';
+import svgGrayCheck from '~/public/check_gray.svg';
+import Section from '@/components/Section.astro';
+
+const SVG = {
+  indigo: {
+    srcStr: svgIndigoCheck,
+    altStr: 'Indigo Checkmark'
+  },
+  purple: {
+    srcStr: svgPurpleCheck,
+    altStr: 'Purple Checkmark'
+  },
+  gray: {
+    srcStr: svgGrayCheck,
+    altStr: 'Gray Checkmark'
+  }
+}
+
+const tableHead = [
+  '',
+  'Free',
+  'Team',
+  'Business',
+  'Enterprise'
+]
+
+const tableRow = [
+  ['Customer Support Level', 'Community', 'Standard', 'Standard', 'Priority'],
+  ['Support Quality', '-', '-', '-', SVG.gray],
+  ['SLAs', '-', SVG.indigo, SVG.purple, SVG.gray],
+  ['Availability', '-', SVG.indigo, SVG.purple, SVG.gray],
+]
+---
+
+<Section>
+  <div class="flex flex-col">
+    <div class="flex flex-col text-center">
+      <h2>Support Plans</h2>
+      <p>Our support offerings ensure your organization has the resources and responsiveness to meet your needs.</p>
+    </div>
+  </div>
+</Section>
+<table class="table-fixed w-full">
+  <thead>
+    <tr class="divide-y">
+      {tableHead.map(head => (
+        <td>
+          {head && <h3>{head}</h3>}
+        </td>
+      ))}
+    </tr>
+  </thead>
+  <tbody>
+    {tableRow.map(row => (
+      <tr class="divide-y">
+        {row.map((item, index) => (
+          <>
+            {index === 0 &&
+              <th>
+                <h3>{item}</h3>
+              </th>
+            }
+            {index > 0 && 
+              <td>
+                {typeof item === 'object' && <img src={item.srcStr} alt={item.altStr} />}
+                {typeof item !== 'object' && item}
+              </td>
+            }
+          </>
+        ))}
+      </tr>
+    ))}
+  </tbody>
+</table>
